@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lit element</title>
+
+
+    <!-- <script type="module" src="/Lit Project/components/al-button/al-button.js"></script>
+    <script type="module" src="/Lit Project/components/al-checkbox/al-checkbox.js"></script> -->
+    <script type="module" src="/Lit Project/components/common.js"></script>
+    <!-- <script type="module" src="/Lit Project/components/color-picker/al-color-picker.js"></script> -->
+    <!-- <script src="/node_modules/color/index.js"></script> -->
+</head>
+
+<body>
+
+    <al-color-picker opacity></al-color-picker>
+
+
+    <!-- <al-spinner></al-spinner>
+    <al-spinner style="font-size: 36px;"></al-spinner>
+    <al-spinner style="font-size: 3rem;"></al-spinner>
+    <al-spinner style="font-size: 3rem; --track-width: 6px;"></al-spinner>
+    <al-spinner style="font-size: 3rem; --track-width: 6px;
+     --indicator-color: deeppink; --track-color: hsl(228, 12%, 67%);"></al-spinner> -->
+
+    <!-- <al-rating></al-rating>
+    <br>
+    <al-rating max="3"></al-rating>
+    <br>
+    <al-rating precision="0.5" value="2.5"></al-rating>
+    <br>
+    <al-rating readonly value="3"></al-rating>
+    <br>
+    <al-rating disabled value="3"></al-rating>
+    <br>
+
+    <al-rating class="rating-hearts" style="--symbol-color-active: #ff4136;"></al-rating>
+
+    <script>
+        const rating = document.querySelector('.rating-hearts');
+        rating.getSymbol = () => '<al-icon name="heart-fill"></al-icon>'; 
+    </script>
+
+    <br>
+    <al-rating class="rating-emojis"></al-rating>
+
+    <script>
+        const rating1 = document.querySelector('.rating-emojis');
+
+        rating1.getSymbol = (value) => {
+            const icons = ['emoji-angry', 'emoji-frown', 'emoji-expressionless', 'emoji-smile', 'emoji-laughing'];
+            return `<al-icon name="${icons[value - 1]}"></al-icon>`;
+        };
+    </script> -->
+
+
+
+    <!-- <al-dialog label="Dialog" style="--width: 500px;" class="dialog-overview">
+        <div style="height: 150vh; border: dashed 2px blue; padding: 0 1rem;">
+            <p>Scroll down and give it a try</p>
+            <al-input placeholder="I will have focus when the dialog is opened"></al-input>
+        </div>
+        <al-button slot="footer" type="primary">Close</al-button>
+    </al-dialog>
+
+    <al-button circle>Open Dialog</al-button>
+
+    <script>
+        const dialog = document.querySelector('.dialog-overview');
+        const input = dialog.querySelector('al-input');
+        const openButton = dialog.nextElementSibling;
+        const closeButton = dialog.querySelector('al-button[slot="footer"]');
+
+        openButton.addEventListener('click', () => dialog.show());
+        closeButton.addEventListener('click', () => dialog.hide());
+        dialog.addEventListener('al-request-close', (event) => event.preventDefault());
+        dialog.addEventListener('al-initial-focus', (event) => {
+            event.preventDefault();
+            input.focus({ preventScroll: true });
+        });
+    </script> -->
+
+
+
+    <!-- <al-progress-bar value="50" indeterminate>Progress-bar</al-progress-bar>
+    <br>
+    <al-progress-bar value="50">Progress-bar</al-progress-bar>
+    <br>
+    <al-progress-bar value="50" style="--height: 10px;"></al-progress-bar>
+    <br>
+    <al-progress-bar value="50" style="--indicator-color: yellow;"></al-progress-bar>
+    <br>
+    <al-progress-bar value="50" class="progress-bar-value">50%</al-progress-bar>
+    <br>
+    <al-button>
+        <al-icon name="dash"></al-icon>
+    </al-button>
+    <al-button>
+        <al-icon name="plus"></al-icon>
+    </al-button>
+
+    <script>
+        const progressBar = document.querySelector('.progress-bar-value');
+        const substractButton = progressBar.nextElementSibling.nextElementSibling;
+        const additionButton = substractButton.nextElementSibling;
+
+        substractButton.addEventListener('click', () => {
+            progressBar.value = Math.max(progressBar.value - 10, 0);
+            progressBar.textContent = `${progressBar.value}%`;
+        })
+        additionButton.addEventListener('click', () => {
+            progressBar.value = Math.min(progressBar.value + 10, 100);
+            progressBar.textContent = `${progressBar.value}%`;
+        })
+    </script> -->
+
+
+
+    <!-- <al-textarea help-text="Write something for us." resize="none" placeholder="Type something" size="small">
+        Comment here
+    </al-textarea>
+
+    <al-textarea label="Feedback" resize="auto" size="medium" help-text="Please tell us something for us."
+        placeholder="Type something" filled>
+    </al-textarea>
+
+    <al-textarea label="Feedback" help-text="Write something" placeholder="Type something for us." filled size="large">
+    </al-textarea> -->
+
+
+    <!-- <data-table url="https://fakestoreapi.com/products/1"></data-table> -->
+    <!-- <data-table show-data-size=4></data-table> -->
+
+    <!-- <al-tab-group placement="top" class="tabs-closable">
+        <al-tab slot="nav" panel="general" closable>General</al-tab>
+        <al-tab slot="nav" panel="custom" closable>Custom</al-tab>
+        <al-tab slot="nav" panel="advanced" closable active>Advanced</al-tab>
+        <al-tab slot="nav" panel="disabled" closable disabled>Disabled</al-tab>
+
+        <al-tab-panel name="general">This is the general tab panel.</al-tab-panel>
+        <al-tab-panel name="custom">This is the custom tab panel.</al-tab-panel>
+        <al-tab-panel name="advanced">This is the advanced tab panel.</al-tab-panel>
+        <al-tab-panel name="disabled">This is a disabled tab panel.</al-tab-panel>
+    </al-tab-group>
+
+    <script>
+        const tabGroup = document.querySelector('.tabs-closable');
+
+        tabGroup.addEventListener('al-close', event => {
+            const tab = event.target;
+            const panel = tabGroup.querySelector(`al-tab-panel[name="${tab.panel}"]`);
+
+            // Show the previous tab if the tab is currently active
+            if (tab.active) {
+                tabGroup.show(tab.previousElementSibling.panel);
+            }
+
+            // Remove the tab + panel
+            tab.remove();
+            panel.remove();
+        });
+    </script> -->
+
+
+    <!-- <al-tab-group>
+        <al-tab slot="nav" panel="tab-1">Tab 1</al-tab>
+        <al-tab slot="nav" panel="tab-2">Tab 2</al-tab>
+        <al-tab slot="nav" panel="tab-3">Tab 3</al-tab>
+        <al-tab slot="nav" panel="tab-4">Tab 4</al-tab>
+        <al-tab slot="nav" panel="tab-5">Tab 5</al-tab>
+        <al-tab slot="nav" panel="tab-6">Tab 6</al-tab>
+        <al-tab slot="nav" panel="tab-7">Tab 7</al-tab>
+        <al-tab slot="nav" panel="tab-8">Tab 8</al-tab>
+        <al-tab slot="nav" panel="tab-9">Tab 9</al-tab>
+        <al-tab slot="nav" panel="tab-10">Tab 10</al-tab>
+        <al-tab slot="nav" panel="tab-11">Tab 11</al-tab>
+        <al-tab slot="nav" panel="tab-12">Tab 12</al-tab>
+        <al-tab slot="nav" panel="tab-13">Tab 13</al-tab>
+        <al-tab slot="nav" panel="tab-14">Tab 14</al-tab>
+        <al-tab slot="nav" panel="tab-15">Tab 15</al-tab>
+        <al-tab slot="nav" panel="tab-16">Tab 16</al-tab>
+        <al-tab slot="nav" panel="tab-17">Tab 17</al-tab>
+        <al-tab slot="nav" panel="tab-18">Tab 18</al-tab>
+        <al-tab slot="nav" panel="tab-19">Tab 19</al-tab>
+        <al-tab slot="nav" panel="tab-20">Tab 20</al-tab>
+
+        <al-tab-panel name="tab-1">Tab panel 1</al-tab-panel>
+        <al-tab-panel name="tab-2">Tab panel 2</al-tab-panel>
+        <al-tab-panel name="tab-3">Tab panel 3</al-tab-panel>
+        <al-tab-panel name="tab-4">Tab panel 4</al-tab-panel>
+        <al-tab-panel name="tab-5">Tab panel 5</al-tab-panel>
+        <al-tab-panel name="tab-6">Tab panel 6</al-tab-panel>
+        <al-tab-panel name="tab-7">Tab panel 7</al-tab-panel>
+        <al-tab-panel name="tab-8">Tab panel 8</al-tab-panel>
+        <al-tab-panel name="tab-9">Tab panel 9</al-tab-panel>
+        <al-tab-panel name="tab-10">Tab panel 10</al-tab-panel>
+        <al-tab-panel name="tab-11">Tab panel 11</al-tab-panel>
+        <al-tab-panel name="tab-12">Tab panel 12</al-tab-panel>
+        <al-tab-panel name="tab-13">Tab panel 13</al-tab-panel>
+        <al-tab-panel name="tab-14">Tab panel 14</al-tab-panel>
+        <al-tab-panel name="tab-15">Tab panel 15</al-tab-panel>
+        <al-tab-panel name="tab-16">Tab panel 16</al-tab-panel>
+        <al-tab-panel name="tab-17">Tab panel 17</al-tab-panel>
+        <al-tab-panel name="tab-18">Tab panel 18</al-tab-panel>
+        <al-tab-panel name="tab-19">Tab panel 19</al-tab-panel>
+        <al-tab-panel name="tab-20">Tab panel 20</al-tab-panel>
+    </al-tab-group> -->
+
+
+    <!-- <al-details summary="Toggle me first" open>
+            Details show a brief summary and expand to show additional content.
+            An HTML element is a type of HTML document component, one of several types of HTML nodes. HTML document is
+            composed of a tree of simple HTML nodes, such as text nodes, and HTML elements, which add semantics and
+            formatting to parts of document. Each element can have HTML attributes specified.
+        </al-details>
+
+        <al-details>
+            <div slot="summary">Toggle me second</div>
+            <div>Details show a brief summary and expand to show additional content.
+                An HTML element is a type of HTML document component, one of several types of HTML nodes. HTML document
+                is
+                composed of a tree of simple HTML nodes, such as text nodes, and HTML elements, which add semantics and
+                formatting to parts of document. Each element can have HTML attributes specified.
+            </div>
+        </al-details>
+
+        <al-details summary="Toggle me Third" disabled> 
+            Details show a brief summary and expand to show additional content.
+            An HTML element is a type of HTML document component, one of several types of HTML nodes. HTML document is
+            composed of a tree of simple HTML nodes, such as text nodes, and HTML elements, which add semantics and
+            formatting to parts of document. Each element can have HTML attributes specified.
+        </al-details> -->
+
+    <!-- <div class="alert">
+        <al-button>Show alert</al-button><br>
+        <al-alert closable duration="2000">
+            <al-icon slot="icon" name="info-circle"></al-icon>
+            This is a primary alert. You can customize its content and even the icon.
+        </al-alert><br>
+    </div>
+
+    <script>
+        const container = document.querySelector('.alert');
+        const button = container.querySelector('al-button');
+        const alert = container.querySelector('al-alert');
+
+        button.addEventListener('click', () => alert.show());
+    </script>
+
+    <al-alert open closable type="success" duration="3000">
+        <al-icon slot="icon" name="check2-circle"></al-icon>
+        This is a success alert. You can customize its content and even the icon.
+    </al-alert><br>
+
+    <al-alert open closable type="neutral">
+        <al-icon slot="icon" name="gear"></al-icon>
+        This is a neutral alert. You can customize its content and even the icon.
+    </al-alert><br>
+
+    <al-alert open closable type="warning">
+        <al-icon slot="icon" name="exclamation-triangle"></al-icon>
+        This is a warning alert. You can customize its content and even the icon.
+    </al-alert><br>
+
+    <al-alert open closable type="danger">
+        <al-icon slot="icon" name="exclamation-octagon"></al-icon>
+        This is a danger alert. You can customize its content and even the icon.
+    </al-alert><br> -->
+
+    <!-- <fieldset>
+        <al-form class="form-overview">
+            <al-input name="name" help-text="type algo here" clearable label="Name" required>
+            </al-input>
+            <br>
+            <al-input name="password" type="password" clearable label="Password" required toggle-password></al-input>
+            <br>
+            <al-select name="favorite" label="Select your favorite" help-text="Please select one" required>
+                <al-menu-item value="birds">Birds</al-menu-item>
+                <al-menu-item value="cats">Cats</al-menu-item>
+                <al-menu-item value="dogs">Dogs</al-menu-item>
+            </al-select>
+            <br>
+            <al-checkbox name="agree" value="yes" required>
+                I totally agree
+            </al-checkbox>
+            <br><br>
+            <al-radio-group label="select your game" fieldset>
+                <al-radio value='Badminton' name="radio" checked>Badminton</al-radio>
+                <al-radio value='Football' name="radio">Football</al-radio>
+                <al-radio value='Hockey' name="radio">Hockey</al-radio>
+                <al-radio value='Cricket' name="radio">Cricket</al-radio>
+            </al-radio-group><br>
+            <al-button submit>Submit</al-button>
+        </al-form>
+    </fieldset> -->
+
+
+
+
+    <!-- <script>
+        const form = document.querySelector('.form-overview');
+        const input = form.querySelector('al-input[name="name"]');
+        const select = form.querySelector('al-select');
+        const checkbox = form.querySelector('al-checkbox');
+
+        form.addEventListener('al-submit', (event) => {
+            alert('All fields are valid!');
+            const formData = {};
+            event.detail.formData.forEach((value, key) => (formData[key] = value));;
+            alert(JSON.stringify(formData));
+        });
+
+        events = ['al-select', 'al-input']
+        events.map(eventName => {
+            input.addEventListener(eventName, () => {
+                input.value === "algo" ? input.setCustomValidity('')
+                    : input.setCustomValidity('please type algo here!');
+            })
+        });
+        select.addEventListener('al-change', () => {
+            select.value === "birds" ? select.setCustomValidity('')
+                : select.setCustomValidity('please select birds only!');
+        });
+        checkbox.addEventListener('al-change', () => {
+            checkbox.checked && checkbox.value === "yes" ? checkbox.setCustomValidity('')
+                : checkbox.setCustomValidity("please select a checkbox");
+        })
+    </script> -->
+
+    <!-- <al-select multiple placeholder="Select one" clearable filled pill size="medium">
+        <al-icon name="house" slot="prefix"></al-icon>
+        <al-menu-item value="option-1">Option 1</al-menu-item>
+        <al-menu-item value="option-2">Option 2</al-menu-item>
+        <al-menu-item value="option-3">Option 3</al-menu-item>
+        <al-menu-item value="option-4">Option 4</al-menu-item>
+        <al-menu-item value="option-5">Option 5</al-menu-item>
+        <al-menu-item value="option-6">Option 6</al-menu-item>
+        <al-icon name="chat" slot="suffix"></al-icon>
+    </al-select>
+
+    <al-divider></al-divider>
+    <al-divider style="--color: tomato"></al-divider>
+
+    Use the --width custom property to change the width of the divider.
+    <al-divider style="--width: 4px; --color:tomato;--spacing:95px"></al-divider>
+
+    <div style="display: flex; align-items: center; height: 2rem;">
+        First
+        <al-divider vertical></al-divider>
+        Middle
+        <al-divider vertical></al-divider>
+        Last
+    </div> -->
+
+    <!-- <al-menu class="menu-value" style="max-width: 200px; border: solid 1px hsl(240 5.9% 90%); border-radius: 1rem;">
+        <al-menu-item value="undo">
+            <span slot="prefix">
+                <al-icon name="counterclockwise"></al-icon>
+            </span>
+            Undo
+        </al-menu-item>
+        <al-menu-item value="redo">Redo</al-menu-item>
+        <al-menu-item value="cut">Cut</al-menu-item>
+        <al-menu-item value="copy" disabled>Copy</al-menu-item>
+        <al-menu-item value="paste">Paste</al-menu-item>
+        <al-menu-item value="delete">Delete</al-menu-item>
+    </al-menu> -->
+
+    <!-- <al-dropdown>
+        <al-button slot="trigger" caret>
+            Dropdown</al-button>
+        <al-menu>
+            <al-menu-item>Dropdown Item 1</al-menu-item>
+            <al-menu-item>Dropdown Item 2</al-menu-item>
+            <al-menu-item>Dropdown Item 3</al-menu-item>
+            <al-menu-item checked>Checked</al-menu-item>
+            <al-menu-item disabled>Disabled</al-menu-item>
+            <al-menu-item>
+                Prefix
+                <al-icon slot="prefix" name="gift"></al-icon>
+            </al-menu-item>
+            <al-menu-item>
+                Suffix Icon
+                <al-icon slot="suffix" name="heart"></al-icon>
+            </al-menu-item>
+        </al-menu>
+    </al-dropdown> -->
+
+
+    <!-- <script>
+        const menu = document.querySelector('.menu-value');
+
+        menu.addEventListener('al-select', event => {
+            const item = event.detail.item;
+            item.checked = !item.checked;
+            console.log(`Selected value: ${item.value}`);
+        });
+    </script> -->
+
+</body>
+
+</html>
